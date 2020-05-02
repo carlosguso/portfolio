@@ -1,0 +1,75 @@
+.socialbar {
+    position: absolute;
+    top: 50%; right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    margin-top: -25vh;
+    margin-right: 1rem;
+    text-align: center;
+
+    a {
+        background-color: var(--color-primary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        width: 4rem;
+        height: 4rem;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        transition: all 500ms ease-in;
+    
+        svg path {
+            fill: var(--color-on-primary);
+        }
+
+        &:hover.fa-instagram {
+            background-color: #f09433; 
+            background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+            background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+
+            svg path {
+                fill: white;
+            }
+        }
+
+        &:hover.fa-twitter {
+            background-color: #00aced;
+
+            svg path {
+                fill: white;
+            }
+        }
+
+        &:hover.fa-github {
+            background-color: #24292e;
+
+            svg path {
+                fill: white;
+            }
+        }
+
+        &:hover.fa-envelope {
+            background-color: var(--color-secondary);
+
+            svg path {
+                fill: var(--color-background);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .socialbar {
+        position: static;
+        flex-direction: row;
+        margin: 0;
+        height: 100%;
+        justify-content: space-around;
+    }
+}
