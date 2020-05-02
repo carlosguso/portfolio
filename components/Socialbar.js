@@ -4,6 +4,11 @@ import {faInstagram, faTwitter, faGithub} from '@fortawesome/free-brands-svg-ico
 import {faEnvelope} from '@fortawesome/free-regular-svg-icons'
 import Link from 'next/link';
 
+/**
+ * Component for the socialbar.
+ * @component
+ * @prop {boolean} home Adds email button if we are in the homepage. 
+ */
 export default function Socialbar({home}) {
     return (
        <div className="socialbar">

@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react'
 
+/**
+ * Component for the navbar.
+ * @component
+ * @prop {string} text Heading text to show in the navbar.
+ * @prop {boolean} line Line (hr) to display in the page
+ */
 export default function Navbar(props) {
 
     useEffect(() => {
