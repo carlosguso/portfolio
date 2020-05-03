@@ -1,6 +1,6 @@
 :root {
     --color-primary: #253ccf;
-    --color-primary-varient: #0525b7;
+    --color-primary-variant: #0525b7;
     --color-secondary: #cfb825;
     --color-secondary-varient: #f1e030;
     --color-background: #fff;
@@ -67,6 +67,8 @@ body {
     padding: 0;
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
+    list-style: none;
+    text-decoration: none;
 }
 
 //$primary-color: #4E5EE0;

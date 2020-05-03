@@ -6,7 +6,12 @@ class Portfolio extends Component {
     render() {
         return (
             <div>
-                
+                <Navbar line text="Portfolio"/>
+                <div className="portfolio">
+                    <PortfolioItem/>
+                    <PortfolioItem/>
+                    <PortfolioItem/>
+                </div>
             </div>
         )
     }
