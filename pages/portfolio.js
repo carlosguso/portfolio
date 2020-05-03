@@ -6,7 +6,7 @@ class Portfolio extends Component {
     render() {
         return (
             <div>
-                <Navbar line text="Portfolio"/>
+                <Navbar line text="Portfolio" currentPage="portfolio"/>
                 <div className="portfolio">
                     <PortfolioItem/>
                     <PortfolioItem/>

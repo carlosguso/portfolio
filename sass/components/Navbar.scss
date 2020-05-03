@@ -10,7 +10,9 @@
     .menu-ham{
         padding-top: 0;
         width: 32px;
+        z-index: 10;
         //height: 4rem;
+        transition: all 500ms;
 
         &:hover {
             cursor: pointer;
@@ -23,6 +25,25 @@
             margin-bottom: 5px;
             background-color: var(--color-primary);
             border-radius: 20px;
+            transition: all 400ms;
+        }
+
+        &.opened {
+            transform: rotate(180deg);
+            .menu-line {
+                width: 45px;
+                &:nth-child(1) {
+                    transform: rotate(45deg) translateY(6px);
+                }
+
+                &:nth-child(2) {
+                    display: none;
+                }
+
+                &:nth-child(3) {
+                    transform: rotate(-45deg) translateY(-6px);
+                }
+            }
         }
     }
 
@@ -43,6 +64,62 @@
     height: 3px;
     margin: auto ;
     background-color: var(--color-primary);
+}
+
+.menu {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(5,37,183, 0.8);
+    z-index: 5;
+    visibility: hidden;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    display: flex;
+    transition: all 200ms ease-in-out;
+
+    .menu-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+        a {
+            color: white;
+            font-size: 3rem;
+            margin: 1rem;
+            opacity: 0;
+            transition: all 200ms ease-in-out;
+
+            &.current-page {
+                text-decoration: underline;
+            }
+            
+            &:hover {
+                color: var(--color-secondary);
+            }
+        }
+
+        @for $i from 1 through 4 {
+            a:nth-child(#{$i}) {
+              transition-delay: calc(#{$i} * 150ms);
+            }
+        }
+        
+    }
+    
+
+    &.opened {
+        visibility: visible;
+        opacity: 1;
+        .menu-list {
+            a {
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .dark {

@@ -24,7 +24,7 @@ class Index extends PureComponent {
     };
     return (
       <>
-        <Navbar/>
+        <Navbar currentPage="main"/>
         <div className= "index-wrapper wrapper">
           <div className="wrapper">
             <h2>Carlos Gutiérrez.</h2>
