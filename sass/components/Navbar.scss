@@ -1,3 +1,4 @@
+@import './ThemeSwitch';
 .navbar {
     width: 90%;
     height: 5vh;
@@ -30,7 +31,9 @@
 
         &.opened {
             transform: rotate(180deg);
+            margin-left: 1rem;
             .menu-line {
+                background-color: white;
                 width: 45px;
                 &:nth-child(1) {
                     transform: rotate(45deg) translateY(6px);
@@ -70,7 +73,7 @@
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(5,37,183, 0.8);
+    background-color: rgba(5,37,183, 0.9);
     z-index: 5;
     visibility: hidden;
     justify-content: center;

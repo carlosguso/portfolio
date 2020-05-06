@@ -1,0 +1,50 @@
+.theme-switch {
+    //background-color: red;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    margin: 0.25rem;
+    padding: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    h6 {
+        color: white;
+    }
+
+    .switch {
+        width: 100%;
+        height: 50%;
+        border-radius: 20px;
+        //transition: background-color 500ms ease-in-out;
+        background-color: rgb(189, 189, 189);
+        
+        &:hover {
+            cursor: pointer;
+        }
+
+        .slider {
+            transition: all 500ms ease-in-out;
+            margin: 0.25rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: white;
+
+        }
+        
+    }
+}
+
+.dark {
+    .switch{
+        background-color: var(--color-primary);
+
+        .slider {
+            margin-left: 60%;
+        }
+    }
+}

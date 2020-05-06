@@ -1,5 +1,6 @@
-import React, { useEffect , useState} from 'react'
+import React, {useState} from 'react'
 import Link from 'next/link';
+import ThemeSwitch from './ThemeSwitch';
 
 /**
  * Component for the navbar.
@@ -11,10 +12,6 @@ export default function Navbar(props) {
 
     const [open, setOpen] = useState(false);
 
-    useEffect(() => {
-        document.getElementsByTagName("body")[0].classList.add("dark");
-    }, []);
-
     const menuClick = () => {
         console.log("Clicked!")
         setOpen(!open)
@@ -25,11 +22,11 @@ export default function Navbar(props) {
         const routesList = ['/','/portfolio', '/contact', '/blog'];
         return linkList.map((item, index) => {
             if(props.currentPage === item.toLowerCase()) {
-                return(<Link href={routesList[index]}>
+                return(<Link href={routesList[index]} key={index}>
                     <a className="current-page">{item}</a>
                 </Link>)
             } else {
-                return(<Link href={routesList[index]}>
+                return(<Link href={routesList[index]} key={index}>
                     <a>{item}</a>
                 </Link>)
             }
@@ -42,6 +39,7 @@ export default function Navbar(props) {
             <div className="menu-list">
                 {renderLinks()}
             </div>
+            <ThemeSwitch/>
         </div>
         <div className="navbar">
         <div className={open ? "menu-ham opened" : "menu-ham"} onClick={() => menuClick()}>
