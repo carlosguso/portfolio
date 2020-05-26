@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faInstagram, faTwitter, faGithub} from '@fortawesome/free-brands-svg-icons'
-import {faEnvelope} from '@fortawesome/free-regular-svg-icons'
+import {faEnvelope, faFileAlt} from '@fortawesome/free-regular-svg-icons'
 import Link from 'next/link';
 
 /**
@@ -24,7 +24,7 @@ export default function Socialbar({home}) {
           {home && 
             <Link href="/contact">
               <a className="fa-envelope">
-                <FontAwesomeIcon icon={faEnvelope}/>
+                <FontAwesomeIcon icon={faFileAlt}/>
               </a>
             </Link>
           }
