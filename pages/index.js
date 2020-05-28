@@ -45,7 +45,7 @@ class Index extends PureComponent {
             <button className="highlight">CONTACT ME</button>
           </div>
         </div>
-        <Socialbar home/>
+        <Socialbar/>
       </>
     )
   }

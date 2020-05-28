@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faInstagram, faTwitter, faGithub} from '@fortawesome/free-brands-svg-icons'
-import {faEnvelope, faFileAlt} from '@fortawesome/free-regular-svg-icons'
+import {faFileAlt} from '@fortawesome/free-regular-svg-icons'
 import Link from 'next/link';
 
 /**
@@ -9,7 +9,7 @@ import Link from 'next/link';
  * @component
  * @prop {boolean} home Adds email button if we are in the homepage. 
  */
-export default function Socialbar({home}) {
+export default function Socialbar() {
     return (
        <div className="socialbar">
           <a href="" className="fa-github">
@@ -21,13 +21,11 @@ export default function Socialbar({home}) {
           <a href="" className="fa-instagram">
             <FontAwesomeIcon icon={faInstagram}/>
           </a>
-          {home && 
-            <Link href="/contact">
-              <a className="fa-envelope">
-                <FontAwesomeIcon icon={faFileAlt}/>
-              </a>
-            </Link>
-          }
+          <Link href="/resume.pdf">
+            <a className="fa-resume">
+              <FontAwesomeIcon icon={faFileAlt}/>
+            </a>
+          </Link>
         </div>
     )
 }
