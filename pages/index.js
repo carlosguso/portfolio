@@ -18,10 +18,7 @@ class Index extends PureComponent {
   }
 
   render() {
-    const navbarProps = {
-      text: "Portfolio",
-      line: true
-    };
+    
     return (
       <>
         <Navbar currentPage="main"/>
