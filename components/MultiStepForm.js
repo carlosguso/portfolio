@@ -8,6 +8,12 @@ export default function MultiStepForm() {
     //State 3: Enter message.
     //State 4: Completed. 
     const [progress, setprogress] = useState(0);
+    const [form, setform] = useState({
+        subject: "",
+        email: "",
+        name: "",
+        message: ""
+    });
 
     const drawBar = () => {
         let bar = [];
@@ -32,10 +38,32 @@ export default function MultiStepForm() {
         console.log(progress);
     }, [progress])
 
-    const handleStep = (e) => {
+    useEffect(() => {
+        console.log(form);
+    }, [form])
+
+    const handleStep = (e,step) => {
         e.preventDefault();
-        setprogress(progress < 4 ? progress+1 : 4);
+        if(step > 0 ) {
+            setprogress(progress < 4 ? progress+1 : 4);
+        } else {
+            setprogress(progress > 0 ? progress-1 : 0);
+        }
+        handleFormData();
     }
+
+    const handleFormData = () => {
+        //console.log("formadata progress: " +  progress);
+        switch(progress) {
+            case 0:
+                const val = document.getElementsByTagName("input")[0].value;
+                setform({...form,subject: val});
+                break;
+
+            default:
+                break;
+        }
+    } 
 
     return (
         <form className="form">
@@ -44,12 +72,40 @@ export default function MultiStepForm() {
             </div>
             {progress == 0 &&
                 <div className="form-input">
-                    <span>Subject</span>
+                    <span>Subject:</span>
                     <input type="text" placeholder="Subject of the matter"></input>
                 </div>
             }
-            <button onClick={handleStep}></button>
+            {progress == 1 &&
+                <div className="form-input">
+                    <span>Email:</span>
+                    <input type="text" placeholder="john@example.com"></input>
+                </div>
+            }
+            {progress == 2 &&
+                <div className="form-input">
+                    <span>Name:</span>
+                    <input type="text" placeholder="John doe"></input>
+                </div>
+            }
+            {progress == 3 &&
+                <div className="form-input">
+                    <span>Message:</span>
+                    <br/>
+                    <textarea placeholder=" Message..."></textarea>
+                </div>
+            }
+            <div className="form-button-wrapper">
+                <button className={progress == 0 ? "disabled": ""} onClick={e => {handleStep(e,-1)}}>Back</button>
+                <button onClick={e => {handleStep(e,1)}}>{progress == 3 ? "Finish" : "Next"}</button>
+            </div>
             
         </form>
     )
 }
+/*
+Missing:
+· Form validation on each input
+· Error messages (with progress bar circle turning red on error)
+Note: Modify to first update the value once it's been validated and then update the state.
+*/
