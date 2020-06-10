@@ -32,6 +32,10 @@
             &.active {
                 background-color: var(--color-primary);
             }
+
+            &.error {
+                background-color: var(--color-error);
+            }
             
         }
 
@@ -73,6 +77,11 @@
             width: 100%;
             border: 1px solid var(--secondary-background);
 
+            &.error{
+                border: 1px solid var(--color-error);
+            }
+    
+
             &:focus {
                 border-radius: 0;
                 outline-color: var(--color-primary);
@@ -83,6 +92,19 @@
             width: 100%;
             min-height: 8rem;
             resize: none;
+
+            &.error{
+                border: 1px solid var(--color-error);
+            }
+        }
+    }
+
+    ul.form-errors {
+        color: var(--color-error);
+        list-style: disc;
+
+        li{
+            border: none;
         }
     }
 
@@ -120,6 +142,7 @@
         background-color: var(--color-dp-04);
 
         .form-input {
+
             span {
                 background: none;
             }
@@ -128,6 +151,10 @@
                 background-color: var(--color-dp-12);
                 color: var(--color-on-background);
                 border: 1px solid var(--color-dp-12);
+
+                &.error{
+                    border: 1px solid var(--color-error);
+                }
 
                 &:focus {
                     outline: none;
@@ -145,6 +172,10 @@
                 border: 1px solid var(--color-dp-12);
                 border-radius: 10px;
 
+                &.error{
+                    border: 1px solid var(--color-error);
+                }
+
                 &:focus {
                     outline: none;
                     border-radius: 0px;
@@ -154,6 +185,8 @@
                     color: var(--secondary-background);
                 }
             }
+
+           
         }
 
         li {
