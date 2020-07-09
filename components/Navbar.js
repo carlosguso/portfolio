@@ -39,7 +39,7 @@ export default function Navbar(props) {
             <div className="menu-list">
                 {renderLinks()}
             </div>
-            <ThemeSwitch/>
+            {open && <ThemeSwitch/>}
         </div>
         <div className="navbar">
         <div className={open ? "menu-ham opened" : "menu-ham"} onClick={() => menuClick()}>

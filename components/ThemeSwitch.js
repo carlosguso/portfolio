@@ -1,25 +1,27 @@
 import React , {useState,useEffect} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faSun, faMoon} from '@fortawesome/free-regular-svg-icons'
 
 const ThemeSwitch = () => {
     const [dark, setDark] = useState("false");
 
     //componentDidMount()
     useEffect(() => {
-        console.log("componentDidMount()")
+        //console.log("componentDidMount()")
         setDark(fetchStorage());
-        console.log("State did mount: " + dark);
+        //console.log("State did mount: " + dark);
         //updateStorage();
     }, []);
 
     //componentDidUpdate
     useEffect(() => {
-        console.log("componentDidUpdate()")
+        //console.log("componentDidUpdate()")
         updateStorage();
     });
 
     const updateStorage = () => {
         const body = document.getElementsByTagName('body')[0];
-        console.log("Current dark state: " + dark);
+        //console.log("Current dark state: " + dark);
         if(!dark) {
             body.classList.remove('dark');
             localStorage.setItem('dark', JSON.stringify(false));
@@ -40,9 +42,8 @@ const ThemeSwitch = () => {
 
     return (
         <div className="theme-switch">
-            <h6>Dark mode:</h6>
             <div className="switch" onClick={() => setDark(!dark)}>
-                <div className="slider"></div>
+                <FontAwesomeIcon icon={dark ? faMoon : faSun}/>
             </div>
         </div>
     )

@@ -8,6 +8,7 @@ export default function MultiStepForm() {
     //State 3: Enter message.
     //State 4: Completed. 
     const [progress, setprogress] = useState(0);
+    const [sent, setsent] = useState(false);
     const [form, setform] = useState({
         subject: "",
         name: "",
@@ -18,10 +19,13 @@ export default function MultiStepForm() {
 
     useEffect(() => {
         //console.log(progress);
+        if(progress == 4) {  
+            console.log("Axios...");
+        } 
     }, [progress])
 
     useEffect(() => {
-        //console.log(form);
+        console.log(form);
     }, [form])
 
     const drawBar = () => {
@@ -82,15 +86,28 @@ export default function MultiStepForm() {
                 if(form.name.length != 0){
                     return true;
                 } else{
-                    errors.push("Subject can´t be empty");
+                    errors.push("Name can´t be empty");
                 }
                 break;
 
             case 2:
-
+                if(form.email.length != 0) {
+                    if(ValidateEmail(form.email)) {
+                        return true;
+                    } else {
+                        errors.push("Incorrect format for email");
+                    }
+                } else {
+                    errors.push("Email can´t be empty");
+                }
                 break;
 
             case 3:
+                if(form.message.length != 0) {
+                    return true;
+                } else {
+                    errors.push("Message can´t be empty");
+                }
                 break;
 
             case 4:
@@ -101,6 +118,15 @@ export default function MultiStepForm() {
         }
         return errors;
     }
+
+    const ValidateEmail = mail => {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     return (
         <form className="form">
@@ -122,7 +148,7 @@ export default function MultiStepForm() {
             {progress == 2 &&
                 <div className="form-input">
                     <span>Email:</span>
-                    <input value={form.email} className={errors.length != 0 ? "error" : ""} type="text" onChange={handleFormData} placeholder="john@example.com" name="email"></input>
+                    <input value={form.email} className={errors.length != 0 ? "error" : ""} type="email" onChange={handleFormData} placeholder="john@example.com" name="email"></input>
                 </div>
             }
             {progress == 3 &&
@@ -139,10 +165,12 @@ export default function MultiStepForm() {
                     })}
                 </ul>
             }
+            {progress != 4 &&
             <div className="form-button-wrapper">
                 <button className={progress == 0 ? "disabled": ""} onClick={e => {handleStep(e,-1)}}>Back</button>
                 <button onClick={e => {handleStep(e,1)}}>{progress == 3 ? "Finish" : "Next"}</button>
             </div>
+            }
             
         </form>
     )
